@@ -4,6 +4,7 @@ import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import session from 'express-session'
+import dotenv from 'dotenv'
 
 import routes from './routes'
 import login from './routes/login'
@@ -11,6 +12,7 @@ import consent from './routes/consent'
 import discovery from './routes/discovery'
 import wellKnown from './routes/well-known'
 
+dotenv.config()
 const cookieSecret = process.env.SESSION_SECRET || 'P^[9%$TQPQV8pqJE'
 const app = express()
 
