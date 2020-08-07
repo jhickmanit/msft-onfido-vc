@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/', csrfProtection, (req, res, next) => {
   hydraPublic
-    .wellKnown()
+    .discoverOpenIDConfiguration()
     .then(({ body }) => {
       res.send(JSON.stringify(body, null, 2))
     })
