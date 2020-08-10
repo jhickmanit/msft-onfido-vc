@@ -1,4 +1,5 @@
-import path from 'path'
+const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   module: {
@@ -18,4 +19,13 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   target: 'node',
+  plugins: [ new CopyPlugin({
+    patterns: [
+      { from: './src/views', to: './views'},
+      { from: './src/public', to: './public'}
+    ]
+  })],
+  node: {
+    __dirname: false
+  }
 }

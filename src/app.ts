@@ -13,13 +13,20 @@ import discovery from './routes/discovery'
 import wellKnown from './routes/well-known'
 
 dotenv.config()
+
+if (module.hot) {
+  module.hot.accept()
+  module.hot.dispose(() => console.log('Module disposed. '))
+}
+
 const cookieSecret = process.env.SESSION_SECRET || 'P^[9%$TQPQV8pqJE'
 const app = express()
 
 app.set('trust proxy', '1')
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'pug')
 
+app.use(express.static('public'))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -66,9 +73,10 @@ app.use((err: Error, req: Request, res: Response) => {
 })
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack)
+  console.log(err.stack)
   res.status(500).render('error', {
-    message: JSON.stringify(err, null, 2),
+    message: err.message,
+    error: {},
   })
 })
 
