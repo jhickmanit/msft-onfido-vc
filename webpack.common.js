@@ -22,7 +22,8 @@ module.exports = {
   plugins: [ new CopyPlugin({
     patterns: [
       { from: './src/views', to: './views'},
-      { from: './src/public', to: './public'}
+      { from: './src/public', to: './public'},
+      { from: './node_modules/qrcode/build/qrcode.min.js', to: './public/js'}
     ]
   })],
   node: {

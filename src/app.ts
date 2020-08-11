@@ -11,6 +11,7 @@ import login from './routes/login'
 import consent from './routes/consent'
 import discovery from './routes/discovery'
 import wellKnown from './routes/well-known'
+import qr from './routes/qrcode'
 
 dotenv.config()
 
@@ -49,6 +50,7 @@ app.use('/login', login)
 app.use('/consent', consent)
 app.use('/.well-known/openid-configuration', discovery)
 app.use('/.well-known/jwks', wellKnown)
+app.use('/qr', qr)
 
 app.use((req, res, next) => {
   next(new Error('Not Found'))

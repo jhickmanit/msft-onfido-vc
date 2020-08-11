@@ -1,16 +1,7 @@
 extends layout
 
 block content
-  .page-header.header-filter(data-parallax='true' style="background: white")
-    .container
-      .row
-        .col-md-12
-          h1 You have reached the Onfido + Microsoft Verifiable Credentials Demo!
-          p This application will give you a demo experience of creating validating your identity with Onfido to issue a Microsoft Verifiable Credential.
-  .main.main-raised
-    .container
-      .section
-        .features
-          .row
-            .col-md-12
-              p For more information see: onfido.com and microsoft.com
+  .demo-center-text
+    h3 Onfido + Microsoft VC Demo
+    p This is a demo implementation of Microsoft's Verifiable Credential using Onfido Identity Verification service as the Credential Issuer
+    p For more information: #[a(href='https://onfido.com') Onfido] and #[a(href='https://microsoft.com') Microsoft].

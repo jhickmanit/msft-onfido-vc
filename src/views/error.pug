@@ -1,10 +1,7 @@
 extends layout
 
 block content
-  .page-header.header-filter(data-parallax='true' style="background-color: white")
-    .container
-      .row
-        .col-md-12  
-          h1= message
-          if error.stack !== undefined
-            pre #{error.stack}
+  .demo-center-text
+    h1= message
+    if error.stack !== undefined
+      pre #{error.stack}

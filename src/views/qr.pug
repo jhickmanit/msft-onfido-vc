@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .demo-center-text
+    h3 Scan this QR Code in your Authenticator App to start the Demo!
+  .demo-center-text
+    canvas#qrCanvas            
+  script.
+    $(document).ready(function () {
+        var encodedUrl = encodeURI('openid://v/?request_uri=#{url}')
+        console.log(encodedUrl)
+        console.log(typeof encodedUrl)
+        QRCode.toCanvas(document.getElementById('qrCanvas'), encodedUrl, {}, function (error) {
+          if (error) console.error(error)
+          console.log('qr generated')
+      })
+    })
