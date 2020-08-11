@@ -12,6 +12,7 @@ import consent from './routes/consent'
 import discovery from './routes/discovery'
 import wellKnown from './routes/well-known'
 import qr from './routes/qrcode'
+import issueRequest from './routes/issue'
 
 dotenv.config()
 
@@ -51,6 +52,7 @@ app.use('/consent', consent)
 app.use('/.well-known/openid-configuration', discovery)
 app.use('/.well-known/jwks', wellKnown)
 app.use('/qr', qr)
+app.use('/vc', issueRequest)
 
 app.use((req, res, next) => {
   next(new Error('Not Found'))
@@ -74,6 +76,7 @@ app.use((err: Error, req: Request, res: Response) => {
   })
 })
 
+//eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log(err.stack)
   res.status(500).render('error', {
@@ -86,3 +89,5 @@ const listenOn = Number(process.env.PORT || 3000)
 app.listen(listenOn, () => {
   console.log(`Listening on http://localhost:${listenOn}`)
 })
+
+export { memoryStore }
